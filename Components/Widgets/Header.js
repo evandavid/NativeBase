@@ -11,6 +11,7 @@ import Title from './Title';
 import InputGroup from './InputGroup';
 import Subtitle from './Subtitle';
 import _ from 'lodash';
+import LinearGradient from 'react-native-linear-gradient';
 
 export default class Header extends NativeBaseComponent {
 
@@ -111,7 +112,7 @@ export default class Header extends NativeBaseComponent {
                     {[title[0],subtitle[0]]}
                     </View>)
                     newChildren.push(<View key='title2' style={{flex: 3, alignSelf: 'stretch'}} />)
-                    newChildren.push(<View key='btn1' style={{alignItems: 'center', justifyContent: 'flex-start', flexDirection: 'row', marginRight: -14}}>
+                    newChildren.push(<View key='btn1' style={{alignItems: 'center', justifyContent: 'flex-start', flexDirection: 'row', marginLeft: -14}}>
                     {React.cloneElement(buttons[0], {color: this.getTheme().iosToolbarBtnColor, style: this.getInitialStyle().toolbarButton})}
                     </View>)
                 }
@@ -202,9 +203,9 @@ export default class Header extends NativeBaseComponent {
 
         render() {
             return(
-            <View ref={c => this._root = c} {...this.prepareRootProps()} >
+            <LinearGradient colors={this.props.colors} start={[0, 1]} end={[1, 0]} ref={c => this._root = c} {...this.prepareRootProps()} >
             {this.renderChildren()}
-            </View>
+            </LinearGradient>
         );
     }
 }
